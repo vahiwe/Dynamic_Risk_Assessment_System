@@ -18,8 +18,31 @@ output_folder_path = config['output_folder_path']
 
 #############Function for data ingestion
 def merge_multiple_dataframe():
-    #check for datasets, compile them together, and write to an output file
+    # create empty dataframe object
+    final_dataframe = pd.DataFrame(columns=["corporation","lastmonth_activity","lastyear_activity","number_of_employees","exited"])
 
+    #check for datasets, compile them together, and write to an output file
+    filenames = os.listdir(os.getcwd() + f'/{input_folder_path}/')
+
+    #get only csv files in directory
+    filenames = [filename for filename in filenames if filename.endswith('.csv')]
+
+    # Open file to record details
+    with open(f'{output_folder_path}/ingestedfiles.txt', 'w') as f:
+
+        # Read files into dataframes
+        for each_filename in filenames:
+            currentdf = pd.read_csv(os.getcwd() + f'/{input_folder_path}/' + each_filename)
+            final_dataframe = final_dataframe.append(currentdf).reset_index(drop=True)
+            # Get the current date and time
+            current_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            f.write(f'{current_date} - {each_filename} has been ingested\n')
+
+        # Deduplicate dataframe
+        final_dataframe = final_dataframe.drop_duplicates()
+
+        # Write dataframe to csv    
+        final_dataframe.to_csv(f'{output_folder_path}/finaldata.csv', index=False)
 
 
 if __name__ == '__main__':
