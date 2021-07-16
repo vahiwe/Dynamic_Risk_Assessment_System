@@ -30,10 +30,14 @@ def store_model_into_pickle(model):
     new_ingest_file_path = os.path.join(prod_deployment_path, 'ingestedfiles.txt')
     os.rename(ingest_file_path, new_ingest_file_path)
 
-if __name__ == '__main__':
-    #load the pickle file
-    model = pickle.load(open(os.path.join(output_model_path, "trainedmodel.pkl"), 'rb'))
+def main():
+    #load the model from the pickle file
+    model = pickle.load(open(f'{prod_deployment_path}/trainedmodel.pkl','rb'))
+    #store the model into the pickle file
     store_model_into_pickle(model)
+
+if __name__ == '__main__':
+    main()
         
         
         

@@ -21,6 +21,9 @@ def merge_multiple_dataframe():
     # create empty dataframe object
     final_dataframe = pd.DataFrame(columns=["corporation","lastmonth_activity","lastyear_activity","number_of_employees","exited"])
 
+    # Ingested files
+    ingested_files = []
+
     #check for datasets, compile them together, and write to an output file
     filenames = os.listdir(os.getcwd() + f'/{input_folder_path}/')
 
@@ -34,10 +37,11 @@ def merge_multiple_dataframe():
         for each_filename in filenames:
             currentdf = pd.read_csv(os.getcwd() + f'/{input_folder_path}/' + each_filename)
             final_dataframe = final_dataframe.append(currentdf).reset_index(drop=True)
-            # Get the current date and time
-            current_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            f.write(f'{current_date} - {each_filename} has been ingested\n')
-
+            ingested_files.append(each_filename)
+            
+        # Store ingested files in a text file
+        f.write(str(ingested_files))
+        
         # Deduplicate dataframe
         final_dataframe = final_dataframe.drop_duplicates()
 
