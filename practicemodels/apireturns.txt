@@ -1,0 +1,33 @@
+{
+  "prediction": "[0 1 1 1 1]"
+}
+{
+  "score": 0.5714285714285715
+}
+{
+  "summary_stats": [
+    [
+      165.65384615384616, 
+      1502.923076923077, 
+      26.884615384615383, 
+      0.5769230769230769
+    ], 
+    [
+      73.0, 
+      955.0, 
+      14.0, 
+      1.0
+    ], 
+    [
+      284.0332293669447, 
+      2192.6449584568304, 
+      31.353885785435814, 
+      0.5038314736557788
+    ]
+  ]
+}
+{
+  "na_stats": "[0.0, 0.0, 0.0, 0.0, 0.0]", 
+  "outdated_packages": "b'Package         Version Latest Type\\n--------------- ------- ------ -----\\nclick           7.1.2   8.0.1  wheel\\nFlask           1.1.2   2.0.1  wheel\\ngunicorn        20.0.4  20.1.0 wheel\\nitsdangerous    1.1.0   2.0.1  wheel\\nJinja2          2.11.3  3.0.1  wheel\\nMarkupSafe      1.1.1   2.0.1  wheel\\nPillow          8.1.0   8.3.1  wheel\\npython-dateutil 2.8.1   2.8.2  wheel\\nscikit-learn    0.24.1  0.24.2 wheel\\nsetuptools      39.0.1  57.2.0 wheel\\nsix             1.15.0  1.16.0 wheel\\nthreadpoolctl   2.1.0   2.2.0  wheel\\nWerkzeug        1.0.1   2.0.1  wheel\\n'", 
+  "timing_stats": "[0.748584094006219, 1.3725015000018175]"
+}
